@@ -1,27 +1,52 @@
 // variable declarations
+
+
 $(document).ready(function() {
 
 var usrHealth = 100;
-var userAttack = 6;
-var cntrAttack = 5;
+var usrAttack = 6;
+var cntrAttack = 15;
 var defHealth = 100;
+var wins = 0;
+var losses = 0;
 var snow
 var jamie
 var dany
 var stannis
 
 
-    console.log("Ready");
+console.log("Ready");
 
 // click events
 
-$("#snow").click(attPic("snow.jpg")); 
-$("#jamie").click(attPic("jamie.jpg")); 
-$("#dany").click(attPic("dany.jpg")); 
-$("#stannis").click(attPic("stannis.jpg")); 
-$("#battle").click( battle());
+
+// confirm("Choose your champion")
+// select();
+// confirm("Choose your opponent")
+// select();
+
+$("#wins").text("Wins = " + wins);
+$("#losses").text("Losses = " + losses);
 
 
+
+    $("#snow").click(function (){
+        attPic("snow.jpg");   
+}); 
+    $("#jamie").click(function (){
+        attPic("jamie.jpg");   
+});  
+    $("#dany").click(function (){
+        attPic("dany.jpg");   
+});  
+    $("#stannis").click(function (){
+        attPic("stannis.jpg");   
+});  
+
+
+$("#battle").click(function (){
+        battle(usrHealth, usrAttack);   
+});
 
 
 
@@ -43,20 +68,40 @@ $("#battle").click( battle());
       console.log(attacker);
     }
 
+    
+    
+    function battle(){
+            defHealth = defHealth - usrAttack;
+            usrAttack = usrAttack + 6;
+            usrHealth = usrHealth - cntrAttack;
+            gameCounter();
+            console.log(usrHealth);
+            console.log(usrAttack);
+            console.log(defHealth);
+    };
 
-  function battle(){
-      defHealth = defHealth - userAttack;
-      userAttack = userAttack + 6;
-      usrHealth = usrHealth - cntrAttack;
-      console.log(defHealth);
-      console.log(userAttack);
-      console.log(usrHealth);
-  };
+//     function wins(){
+//         if (defHealth = 0) {
+//          wins = + 1;
+//         }
 
+//     }
+
+function gameCounter(){
+        if (defHealth <= 0){
+                wins = + 1;
+        }else if (usrHealth <= 0){
+                losses = +1;
+        }
+        $("#wins").text("Wins = " + wins);
+        $("#losses").text("Losses = " + losses);
+}
+
+
+    
 });
 
 
-// $(selector).append(content);
 
 
 
