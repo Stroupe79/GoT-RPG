@@ -34,8 +34,7 @@ $(document).ready(function () {
         $("#wins").text("Wins = " + wins);
         $("#losses").text("Losses = " + losses);
 
-        gameStart();
-        // gameLoop();
+        gameLoop(gameStart());
         
         function gameStart(){
         confirm("Choose your champion");
