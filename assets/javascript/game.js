@@ -3,16 +3,24 @@
 
 $(document).ready(function () {
 
+
         var usrHealth = 100;
         var usrAttack = 6;
         var cntrAttack = 15;
         var defHealth = 100;
         var wins = 0;
         var losses = 0;
+
+        function varReset(){
+        var usrHealth = 100;
+        var usrAttack = 6;
+        var cntrAttack = 15;
+        var defHealth = 100;
         var snow
         var jamie
         var dany
         var stannis
+        };
 
 
         console.log("Ready");
@@ -26,16 +34,16 @@ $(document).ready(function () {
         $("#wins").text("Wins = " + wins);
         $("#losses").text("Losses = " + losses);
 
-        gameStart ();
+        gameStart();
         // gameLoop();
         
-        function gameStart (){
-        confirm("Choose your champion")
+        function gameStart(){
+        confirm("Choose your champion");
                 chooseChr();
                 gameLoop ();
         };
 
-        function gameLoop (){
+        function gameLoop(){
                 confirm("Choose your Opponent");
                 chooseChr();
                 alert("Press the Battle button to begin");
@@ -81,7 +89,7 @@ $(document).ready(function () {
         function attPic(attacker) {
                 $("#attackSpace").append("<img src=./assets/images/" + attacker + ' height="300px"' + "class='col-md-3'" + ">");
                 console.log(attacker);
-        }
+        };
 
 
 
@@ -107,9 +115,11 @@ $(document).ready(function () {
                         wins = +1;
                         alert("You Win this round");
                         gameLoop ();
+                        varReset();
                 } else if (usrHealth <= 0) {
                         losses = +1;
                         alert("You lose");
+                        varReset();
                 }
                 $("#wins").text("Wins = " + wins);
                 $("#losses").text("Losses = " + losses);
