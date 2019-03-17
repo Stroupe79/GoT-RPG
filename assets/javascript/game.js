@@ -1,8 +1,8 @@
-// variable declarations
 
 
 $(document).ready(function () {
-
+        
+        // variable declarations
 
         var usrHealth = 100;
         var usrAttack = 6;
@@ -10,59 +10,60 @@ $(document).ready(function () {
         var defHealth = 100;
         var wins = 0;
         var losses = 0;
+        var opp = false;
+        var attacker;
+        var defender;
+        var snow = {defHealth:200, cntrAttack:20};
+        var jamie = {defHealth:120, cntrAttack:10};
+        var dany = {defHealth:150, cntrAttack:15};
+        var stannis = {defHealth:100, cntrAttack:5};
 
-        function varReset(){
-        var usrHealth = 100;
-        var usrAttack = 6;
-        var cntrAttack = 15;
-        var defHealth = 100;
-        var snow
-        var jamie
-        var dany
-        var stannis
+        // reset counters after battle
+
+        function varReset() {
+                usrHealth = 100;
+                usrAttack = 6;
+                cntrAttack = 15;
+                defender.defHealth = 100;
+                opp = false;
         };
 
 
-        console.log("Ready");
-
-        // click events
-
-
-        // confirm("Choose your opponent")
-        // select();
-        
+        // win loss counter
+                
         $("#wins").text("Wins = " + wins);
         $("#losses").text("Losses = " + losses);
-
-        gameLoop(gameStart());
         
-        function gameStart(){
-        confirm("Choose your champion");
-                chooseChr();
-                gameLoop ();
-        };
+        // official start - first function to run on load
 
-        function gameLoop(){
-                confirm("Choose your Opponent");
-                chooseChr();
-                alert("Press the Battle button to begin");
-                };
+        gameStart();
         
+        
+        
+        // click events
 
-
-        function chooseChr(){
-        $("#snow").click(function () {
-                attPic("snow.jpg");
-        });
-        $("#jamie").click(function () {
-                attPic("jamie.jpg");
-        });
-        $("#dany").click(function () {
-                attPic("dany.jpg");
-        });
-        $("#stannis").click(function () {
-                attPic("stannis.jpg");
-        });
+        function chooseChr() {
+                $("#snow").click(function () {
+                        attPic("snow.jpg");
+                        attCheck(snow);
+                        opponent();
+                        console.log(opp);
+                });
+                $("#jamie").click(function () {
+                        attPic("jamie.jpg");
+                        attCheck(jamie);
+                        opponent();
+                });
+                $("#dany").click(function () {
+                        attPic("dany.jpg");
+                        attCheck(dany);
+                        opponent();
+                });
+                $("#stannis").click(function () {
+                        attPic("stannis.jpg");
+                        attCheck(stannis);
+                        opponent();
+                });
         };
 
 
@@ -70,55 +71,64 @@ $(document).ready(function () {
                 battle(usrHealth, usrAttack);
         });
 
+        function attCheck(character) {
+                if (opp === false) {
+                        attacker = character;
+                        console.log(attacker.defHealth);
+                } else if (opp === true) {
+                        defender = character;
+                        console.log("defender" + defender);
+                }
+        };
 
 
-        // functions - foreach click add to userAttack - remove from defHealth - remove from usrHealth
+        // functions
+
+        function gameStart() {
+                confirm("Choose your champion");
+                chooseChr();
+                console.log(opp);
+        };
+        
+        function opponent() {
+                if (opp === true) {
+                        return;
+                }
+                confirm("Choose your Opponent and Press the Battle button to begin");
+                opp = true;
+        };
 
 
-        // $("select").change(function () {
-        //     var str = "";
-        //     $( "select option:selected" ).each(function() {
-        //       str += $( this ).text() + " ";
-        //     });
-        //     $( "div" ).text( str );
-        //   })
-        //   .change();
-
-
-        function attPic(attacker) {
-                $("#attackSpace").append("<img src=./assets/images/" + attacker + ' height="300px"' + "class='col-md-3'" + ">");
-                console.log(attacker);
+        function attPic(character) {
+                $("#attackSpace").append("<img src=./assets/images/" + character + ' height="300px"' + ">");
+                console.log(character);
         };
 
 
 
         function battle() {
-                defHealth = defHealth - usrAttack;
+                defender.defHealth = defender.defHealth - usrAttack;
                 usrAttack = usrAttack + 6;
-                usrHealth = usrHealth - cntrAttack;
+                usrHealth = usrHealth - defender.cntrAttack;
                 gameCounter();
                 console.log(usrHealth);
                 console.log(usrAttack);
-                console.log(defHealth);
+                console.log(defender.defHealth);
+                console.log(defender.cntrAttack);
         };
 
-        //     function wins(){
-        //         if (defHealth = 0) {
-        //          wins = + 1;
-        //         }
-
-        //     }
 
         function gameCounter() {
-                if (defHealth <= 0) {
+                if (defender.defHealth <= 0) {
                         wins = +1;
                         alert("You Win this round");
-                        gameLoop ();
                         varReset();
+                        opponent();
                 } else if (usrHealth <= 0) {
                         losses = +1;
                         alert("You lose");
                         varReset();
+                        opponent();
                 }
                 $("#wins").text("Wins = " + wins);
                 $("#losses").text("Losses = " + losses);
