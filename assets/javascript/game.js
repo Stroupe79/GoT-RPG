@@ -6,8 +6,6 @@ $(document).ready(function () {
 
         var usrHealth = 100;
         var usrAttack = 0;
-        var cntrAttack = 15;
-        var defHealth = 100;
         var wins = 0;
         var losses = 0;
         var opp = false;
