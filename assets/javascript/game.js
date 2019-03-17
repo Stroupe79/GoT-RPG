@@ -5,7 +5,7 @@ $(document).ready(function () {
         // variable declarations
 
         var usrHealth = 100;
-        var usrAttack = 6;
+        var usrAttack = 0;
         var cntrAttack = 15;
         var defHealth = 100;
         var wins = 0;
@@ -22,9 +22,6 @@ $(document).ready(function () {
 
         function varReset() {
                 usrHealth = 100;
-                usrAttack = 6;
-                cntrAttack = 15;
-                defender.defHealth = 100;
                 opp = false;
         };
 
