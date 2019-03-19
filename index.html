@@ -18,37 +18,60 @@
 
 <body>
 
+    <h1>Choose your Champion</h1>
+    <div class="container bg-dark">
+        <div class="row p-5 text-center">
+            <div class="bg-success p-1 col-md-3">
+                <img id="snow" class="p-1" src="./assets/images/snow.jpg" height="150px">
+                <p id="snowHealth"></p>
+            </div>
+            <div class="bg-success p-1 col-md-3">
+                <img id="jamie" class="p-1" src="./assets/images/jamie.jpg" height="150px" />
+                <p id="jamieHealth"></p>
+            </div>
+
+            <div class="bg-success p-1 col-md-3">
+                <img id="dany" class="p-1" src="./assets/images/dany.jpg" height="150px" />
+                <p id="danyHealth"></p>
+            </div>
+
+            <div class="bg-success p-1 col-md-3">
+               <img id="stannis" class="p-1" src="./assets/images/stannis.jpg" height="150px" />
+               <p id="stannisHealth"></p>
+            </div>
+
+        </div>
+    </div>
+
+    <h1>Attacker Space</h1>
     <div class="container">
-        <h1>Choose your Champion</h1>
         <div class="row p-5">
-            <div class="choice bg-success">
-                <img id="snow" class="p-1" src="./assets/images/snow.jpg" height="300px" />
-                <img id="jamie" class="p-1" src="./assets/images/jamie.jpg" height="300px" />
-                <img id="dany" class="p-1" src="./assets/images/dany.jpg" height="300px" />
-                <img id="stannis" class="p-1" src="./assets/images/stannis.jpg" height="300px" />
-            </div>
+            <div class="border">
+            <div id="attackSpace"></div>
+        </div>
         </div>
 
-            <h1>Attacker Space</h1>
-            <div class="row p-5">
-                <div id="attackSpace"></div>
+
+        <button id="battle">Battle</button>
+
+    </div>
+
+    <h1>Winners Circle</h1>
+    <div class="container bg-dark">
+
+        <div class="row text-center m-5">
+            <div class="col-md-3">
+            <div id="wins" class="card p-5">
+                Wins:</div>
             </div>
-
-
-            <button id="battle">Battle</button>
-
-        </div>
-
-        <div class="container">
-            <h1>Winners Circle</h1>
-
-            <div class="row col-md-6">
-                <div id="wins" class="card p-5">
-                    Wins:</div>
-                <div id="losses" class="card p-5">
-                    Losses:</div>
+            <div id="winner" class="col-md-6">
+            </div>
+            <div class="col-md-3">
+            <div id="losses" class="card p-5">
+                Losses:</div>
             </div>
         </div>
+    </div>
 
     </div>
 
