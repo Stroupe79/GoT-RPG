@@ -113,9 +113,9 @@ $(document).ready(function () {
 
         function attPic(character) {
                 $("#attackSpace").append("<img src=./assets/images/" + character + ' height="300px"' + ">");
-                // if (opp=false){
-                // $("#attackSpace").append("<img src=./assets/images/vs.png" +' height="300px"' + ">");                
-                // }
+                if (opp === false) {
+                $("#attackSpace").append("<img src=./assets/images/vs.png" +' height="300px"' + ">");                
+                };
                 console.log(character);
         };
 
